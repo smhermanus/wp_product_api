@@ -17,7 +17,6 @@ function OrderCtrl_products()
 
 	// get published products from wc internal api and store in array
 	$products = wc_get_products($args);
-
 	$data = [];
 	$i = 0;
 
@@ -25,9 +24,9 @@ function OrderCtrl_products()
 	foreach ($products as $product) {
 		$data[$i]['id'] = $product->get_id();
 		$data[$i]['product name'] = $product->get_title();
-		$data[$i]['category'] = $product->get_category_ids();
-		$data[$i]['size'] = $product->get_attribute('size');
-		$data[$i]['colour'] = $product->get_attribute('colour');
+		$data[$i]['category'] = get_category_names($product->get_id());
+		$data[$i]['size'] = array_map('trim', explodeX(array(",","|"), $product->get_attribute('size')));
+		$data[$i]['colour'] = array_map('trim', explodeX(array(",","|"), $product->get_attribute('colour')));
 		$data[$i]['description'] = $product->get_short_description();
 		$data[$i]['selling_price'] = $product->get_price();
 		$data[$i]['dynamic_pricing'] = getPricingTables($product->get_id());
@@ -40,21 +39,6 @@ function OrderCtrl_products()
 	return $data;
 }
 
-function getPricingTables($product_id)
-{
-	$pricing_rules = get_post_meta($product_id, '_pricing_rules', TRUE);
-	$pricing = [];
-
-	foreach ($pricing_rules as $pricing_rule) {
-		$rules = $pricing_rule['rules'];
-
-		foreach ($rules as $rule) {
-			array_push($pricing, $rule);
-		}
-	}
-
-	return $pricing;
-}
 
 
 function OrderCtrl_product($slug)
@@ -68,8 +52,8 @@ function OrderCtrl_product($slug)
 	$data['id'] = $product[0]->get_id();
 	$data['product name'] = $product[0]->get_title();
 	$data['category'] = $product[0]->get_category_ids();
-	$data['size'] = $product[0]->get_attribute('size');
-	$data['colour'] = $product[0]->get_attribute('colour');
+	$data['size'] = array_map('trim', explodeX(array(",","|"), $product[0]->get_attribute('size')));
+	$data['colour'] = array_map('trim', explodeX(array(",","|"), $product[0]->get_attribute('colour')));
 	$data['description'] = $product[0]->get_short_description();
 	$data['selling_price'] = $product[0]->get_price();
 	$data['dynamic_pricing'] = getPricingTables($product[0]->get_id());
@@ -80,6 +64,38 @@ function OrderCtrl_product($slug)
 
 	return $data;
 }
+
+function explodeX( $delimiters, $string )
+{
+    return explode( chr( 1 ), str_replace( $delimiters, chr( 1 ), $string ) );
+}
+
+
+function get_category_names($product_id){
+	$terms = get_the_terms( $product_id, 'product_cat' );
+
+	foreach ( $terms as $term ) {
+		$categories[] = $term->slug;
+	  }
+
+	return $categories;
+}
+
+function getPricingTables($product_id){
+	$pricing_rules = get_post_meta( $product_id, '_pricing_rules', TRUE );
+	$pricing = [];
+
+	foreach ($pricing_rules as $pricing_rule) {
+		$rules = $pricing_rule['rules'];
+
+		foreach ( $rules as $rule ) {
+			array_push($pricing, $rule);
+		}
+	}
+
+	return $pricing;
+}
+
 
 add_action('rest_api_init', function () {
 	register_rest_route('OrderCtrl/v1', 'products', [
