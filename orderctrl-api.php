@@ -43,6 +43,7 @@ function OrderCtrl_products()
 
 function OrderCtrl_product($slug)
 {
+
 	$args = [
 		'name' => $slug['slug'],
 	];
@@ -51,7 +52,7 @@ function OrderCtrl_product($slug)
 
 	$data['id'] = $product[0]->get_id();
 	$data['product name'] = $product[0]->get_title();
-	$data['category'] = $product[0]->get_category_ids();
+	$data['category'] = get_category_names($product[0]->get_id());
 	$data['size'] = array_map('trim', explodeX(array(",","|"), $product[0]->get_attribute('size')));
 	$data['colour'] = array_map('trim', explodeX(array(",","|"), $product[0]->get_attribute('colour')));
 	$data['description'] = $product[0]->get_short_description();
@@ -75,7 +76,7 @@ function get_category_names($product_id){
 	$terms = get_the_terms( $product_id, 'product_cat' );
 
 	foreach ( $terms as $term ) {
-		$categories[] = $term->slug;
+		$categories[] = $term->name;
 	  }
 
 	return $categories;
