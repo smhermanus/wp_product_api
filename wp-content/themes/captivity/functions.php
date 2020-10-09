@@ -30,26 +30,3 @@ foreach ($sage_includes as $file) {
 unset($file, $filepath);
 
 
-/**
- * Get all variations stock quantity
- * 
- * @param int $product_id Product ID which has variations
- */
-function wc_get_variable_product_stock_quantity( $product_id ) {
-
-  $product    = wc_get_product( $product_id );
-  $variations = $product->get_available_variations();
-
-  $variations_stock = array();
-
-  foreach ( $variations as $variation ) {
-
-      $variation_o = new WC_Product_Variation( $variation['variation_id'] );
-
-      $data['name'] = $variation_o->get_name();
-      $data['quantity'] = $variation_o->get_stock_quantity();
-      $variations_stock[] = $data;
-  }
-
-  return $variations_stock;
-}
