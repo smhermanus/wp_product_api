@@ -1,5 +1,5 @@
 <?php
-define('WP_CACHE', true); // Added by WP Rocket
+define( 'WP_CACHE', true ); // Added by WP Rocket
 /**
  * The base configuration for WordPress
  *
@@ -14,31 +14,23 @@ define('WP_CACHE', true); // Added by WP Rocket
  * * Database table prefix
  * * ABSPATH
  *
- * @link https://codex.wordpress.org/Editing_wp-config.php
+ * @link https://wordpress.org/support/article/editing-wp-config-php/
  *
  * @package WordPress
  */
-
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-
-define('DB_NAME', 'captivity');
-
+define( 'DB_NAME', 'captivity' );
 /** MySQL database username */
-define('DB_USER', 'captivity.co.za');
-
+define( 'DB_USER', 'captivity.co.za');
 /** MySQL database password */
-define('DB_PASSWORD', 'U}4AzGRuW$p7');
-
+define( 'DB_PASSWORD', 'U}4AzGRuW$p7' );
 /** MySQL hostname */
-define('DB_HOST', 'localhost');
-
+define( 'DB_HOST', 'localhost' );
 /** Database Charset to use in creating database tables. */
-define('DB_CHARSET', 'utf8mb4');
-
+define( 'DB_CHARSET', 'utf8mb4' );
 /** The Database Collate type. Don't change this if in doubt. */
-define('DB_COLLATE', '');
-
+define( 'DB_COLLATE', '' );
 /**#@+
  * Authentication Unique Keys and Salts.
  *
@@ -48,29 +40,22 @@ define('DB_COLLATE', '');
  *
  * @since 2.6.0
  */
-define( 'AUTH_KEY', '}f4`x9f/}}Cz@g,!@_E%6*1o2EdMW^11%WCdMXukpx?DaJBE0*V7bEcHb!U *W9p' );
-define( 'SECURE_AUTH_KEY', 'yp2,:bfkFTC8GHDH~z#g0RF/vTd<f,#Fn!E1=mGTWRtZ-Fu-Hd:jhTOzWu*r.yK(' );
-define( 'LOGGED_IN_KEY', ']69nt0PK]hw<XD,!rM_0CRXXWo8xwV7>ocvJ3I_[Sw_$L|1-n@-BV5q/ucWbu;!<' );
-define( 'NONCE_KEY', '*|#> zg/~*)n+<6&B|uKfS6(^E%cGTjp/g !S|U<Wm7jr!RXEa@H?HRvJ}TG|*v-' );
-define( 'AUTH_SALT', '|9cS]1Hj YM@n2+O]@@o{E$yj{@wkfCC}{,S3`KQ2Y,MHia&T3^8RLpGdi2G%O6N' );
-define( 'SECURE_AUTH_SALT', '_llgbt2pV}&Hq$4w:Iq{A918-sNj4D3V=5 b= ]XU^Z6]+[pCI3@)r}HjOQlW#lu' );
-define( 'LOGGED_IN_SALT', 'p?-mJW:guKx(0+dwg`5G0+DLq]Y5ra=UjE{As;I+0WGp(`-NrL,[IvY&{DFGZv7V' );
-define( 'NONCE_SALT', 'Bo<o|Q6`Tx!JA,4?;v@#(w@XU-z_V8h[3Eg#K=#KD^kYjp<vP%G1!8:tO)1d2aDw' );
-
-
+define( 'AUTH_KEY',         'Kq0Tc~.+ #aab{FmPVz-CB!Ni[X*7/{3wMB5o_Xtkos{Wy=x1tahI{K6`V3.E(Bj' );
+define( 'SECURE_AUTH_KEY',  '}~W)a#FWYGm]0>c6LmMeFA@,Xd,~#@wmw; wps}71[<1;H=CmP`5!.ITFv^vjcCx' );
+define( 'LOGGED_IN_KEY',    '_5^u@*lt-F-HWs)~m@N+jJ`)R<6J{Bx)zi%Z=oFzHi3jw4b91{a~rN*u%eQhH+wL' );
+define( 'NONCE_KEY',        't~mV:/fc4+4qALbTZJG]5@j~MZk7$Dn}ZfdMig/xb<#/pe`Vj<83|H2ye>l8@yeX' );
+define( 'AUTH_SALT',        '79XpCx]?I@>bE>[(*i7a1O)]-KDx>&CWm>pqW+kth3Z}#rh$d?.Q}:Iv!ywKZT&.' );
+define( 'SECURE_AUTH_SALT', '!#mv^;dzM|z^WBR~_u-[-A!Y!MID]C1S.0L~!%DpSF_?O3zg9mO<_)?(i#irP#&:' );
+define( 'LOGGED_IN_SALT',   '*!q+/Q_W|9/}^TX~u]c2(u.yObhJ8Y&QW$r2{_<2Cid[#@:3EAx?EV;b-amncj0&' );
+define( 'NONCE_SALT',       'X/bS`mPrn){Z1}F)Yu,XF6QyH0y5sj]m#%y(HVS[Oj{ann@#%|T6JevpK!JG9J,]' );
 /**#@-*/
-
 /**
  * WordPress Database Table prefix.
  *
  * You can have multiple installations in one database if you give each
  * a unique prefix. Only numbers, letters, and underscores please!
  */
-//$table_prefix = 'wp_TVambm_';
-$table_prefix = 'wp_b492UT_';
-
-
-
+$table_prefix = 'wp_captivity2020';
 /**
  * For developers: WordPress debugging mode.
  *
@@ -79,39 +64,31 @@ $table_prefix = 'wp_b492UT_';
  * in their development environments.
  *
  * For information on other constants that can be used for debugging,
- * visit the Codex.
+ * visit the documentation.
  *
- * @link https://codex.wordpress.org/Debugging_in_WordPress
+ * @link https://wordpress.org/support/article/debugging-in-wordpress/
  */
 define( 'WP_DEBUG', false );
-define('DISALLOW_FILE_EDIT', true);
-#define('DISALLOW_FILE_MODS', true);
+
+# increase memory limit
 define('WP_MEMORY_LIMIT', '1024M');
 define('WP_MAX_MEMORY_LIMIT', '1024M');
 set_time_limit(600);
 
-define( 'WP_AUTO_UPDATE_CORE', true );
 define('WP_ALLOW_MULTISITE', true);
-
 define('MULTISITE', true);
 define('SUBDOMAIN_INSTALL', false);
-define('DOMAIN_CURRENT_SITE', 'www.captivity.co.za');
+define('DOMAIN_CURRENT_SITE', 'captivity.co.za');
 define('PATH_CURRENT_SITE', '/');
 define('SITE_ID_CURRENT_SITE', 1);
 define('BLOG_ID_CURRENT_SITE', 1);
 
-
 define( 'SUNRISE', 'on' ); 
 
-define('CONCATENATE_SCRIPTS', false );
-
-#define( 'WP_ALLOW_REPAIR', true );
-
-/* That's all, stop editing! Happy blogging. */
-
+/* That's all, stop editing! Happy publishing. */
 /** Absolute path to the WordPress directory. */
-if ( !defined('ABSPATH') )
-	define('ABSPATH', dirname(__FILE__) . '/');
-
+if ( ! defined( 'ABSPATH' ) ) {
+	define( 'ABSPATH', __DIR__ . '/' );
+}
 /** Sets up WordPress vars and included files. */
-require_once(ABSPATH . 'wp-settings.php');
+require_once ABSPATH . 'wp-settings.php';
