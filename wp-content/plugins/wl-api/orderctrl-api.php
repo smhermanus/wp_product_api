@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Plugin Name: Order Ctrl API v2
+ * Plugin Name: Order Ctrl API v3
  * Plugin URI: http://assetflow.co.za
  * Description: Order Ctrl API
  * Version: 2.0
@@ -150,37 +150,37 @@ function wc_get_variable_product_stock_quantity($product)
 /** create api routes */
 add_action('rest_api_init', function () {
 	// get all products route
-	register_rest_route('OrderCtrl/v2', 'products', [
+	register_rest_route('OrderCtrl/v3', 'products', [
 		'methods' => 'GET',
 		'callback' => 'OrderCtrl_products',
 	]);
 
 	// get individual product route
-	register_rest_route('OrderCtrl/v2', 'products/(?P<slug>[a-zA-Z0-9-]+)', array(
+	register_rest_route('OrderCtrl/v3', 'products/(?P<slug>[a-zA-Z0-9-]+)', array(
 		'methods' => 'GET',
 		'callback' => 'OrderCtrl_product',
 	));
 });
 
 /**
- * Register the /wp-json/OrderCtrl/v2/ products endpoint so it will be cached.
+ * Register the /wp-json/OrderCtrl/v3/ products endpoint so it will be cached.
  */
 function wprc_add_orderCtrl_products_endpoint($allowed_endpoints)
 {
-	if (!isset($allowed_endpoints['OrderCtrl/v2']) || !in_array('products', $allowed_endpoints['OrderCtrl/v2'])) {
-		$allowed_endpoints['OrderCtrl/v2'][] = 'products';
+	if (!isset($allowed_endpoints['OrderCtrl/v3']) || !in_array('products', $allowed_endpoints['OrderCtrl/v3'])) {
+		$allowed_endpoints['OrderCtrl/v3'][] = 'products';
 	}
 	return $allowed_endpoints;
 }
 
 
 /**
- * Register the /wp-json/OrderCtrl/v2/product endpoint so it will be cached.
+ * Register the /wp-json/OrderCtrl/v3/product endpoint so it will be cached.
  */
 function wprc_add_orderCtrl_product_endpoint($allowed_endpoints)
 {
-	if (!isset($allowed_endpoints['OrderCtrl/v2']) || !in_array('product', $allowed_endpoints['OrderCtrl/v2'])) {
-		$allowed_endpoints['OrderCtrl/v2'][] = 'product';
+	if (!isset($allowed_endpoints['OrderCtrl/v3']) || !in_array('product', $allowed_endpoints['OrderCtrl/v3'])) {
+		$allowed_endpoints['OrderCtrl/v3'][] = 'product';
 	}
 	return $allowed_endpoints;
 }
